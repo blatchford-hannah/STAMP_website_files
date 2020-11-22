@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='utf-8' />
-    <title>Points on a map</title>
+    <title>STAMP field locations</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
@@ -27,8 +27,8 @@
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/stamp/ckhglyh121lez19nlqj2bsyzb', // replace this with your style URL
-      center: [-22.661557, -70.893748],
-      zoom: 0.75
+      center: [0, 0],
+      zoom: 1
     });
     // code from the next step will go here
 
@@ -46,7 +46,7 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.Description + '</h3><p>' + feature.properties.LearnMore + '</p>')
+    .setHTML('<h3>' + feature.properties.Name + '</h3><p>' + feature.properties.Description + '</h3><p><a href="' + feature.properties.LearnMore + '">' + feature.properties.LinkText + '</a></p>')
     .addTo(map);
 });
 
